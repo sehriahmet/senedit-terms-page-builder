@@ -65,9 +65,11 @@ document.getElementById('fileInput').addEventListener('change', function(event) 
             linkElement.href = 'https://ahmetgorev2.asehriyar.com/style.css';
             doc.head.appendChild(linkElement);
             
+            /*
             const scriptElement = document.createElement('script');
             scriptElement.src = 'https://ahmetgorev2.asehriyar.com/script.js';
             doc.body.appendChild(scriptElement);
+            */
 
             const modifiedContent = new XMLSerializer().serializeToString(doc);
 
@@ -82,7 +84,7 @@ document.getElementById('fileInput').addEventListener('change', function(event) 
                 const url = URL.createObjectURL(blob);
                 const a = document.createElement('a');
                 a.href = url;
-                a.download = 'modified.html';
+                a.download = 'test.html';
                 a.click();
                 URL.revokeObjectURL(url);  // Clean up after download
             };
