@@ -1,7 +1,7 @@
 document.getElementById('fileInput').addEventListener('change', function(event) {
     const file = event.target.files[0];
 
-    if (file && (file.type === "text/html" || file.type === "text/htm")) {
+    if (file && (file.type === "text/html" || file.type === "text/htm" || file.type === "text/mht" || file.type === "text/mhtml")) {
         const reader = new FileReader();
 
         reader.onload = function(e) {
