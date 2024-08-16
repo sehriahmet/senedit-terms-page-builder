@@ -1,15 +1,17 @@
 document.getElementById('fileInput').addEventListener('change', function(event) {
     const file = event.target.files[0];
 
-    if (file && (file.type === "text/html" || file.type === "text/htm" || file.type === "text/mht" || file.type === "text/mhtml")) {
+    if (file && (file.type === "text/html" || file.type === "text/htm")) {
         const reader = new FileReader();
 
         reader.onload = function(e) {
             const content = e.target.result;
 
+            // Create a DOM parser to manipulate the HTML content
             const parser = new DOMParser();
             const doc = parser.parseFromString(content, 'text/html');
 
+            // Add UTF-8 meta tag if not already present
             const metaCharset = doc.querySelector('meta[charset]');
             if (!metaCharset) {
                 const metaElement = document.createElement('meta');
@@ -63,11 +65,9 @@ document.getElementById('fileInput').addEventListener('change', function(event) 
             linkElement.href = 'https://ahmetgorev2.asehriyar.com/style.css';
             doc.head.appendChild(linkElement);
             
-            /*
             const scriptElement = document.createElement('script');
             scriptElement.src = 'https://ahmetgorev2.asehriyar.com/script.js';
             doc.body.appendChild(scriptElement);
-            */
 
             const modifiedContent = new XMLSerializer().serializeToString(doc);
 
@@ -82,13 +82,13 @@ document.getElementById('fileInput').addEventListener('change', function(event) 
                 const url = URL.createObjectURL(blob);
                 const a = document.createElement('a');
                 a.href = url;
-                a.download = 'test.html';
+                a.download = 'modified.html';
                 a.click();
                 URL.revokeObjectURL(url);  // Clean up after download
             };
         };
 
-        reader.readAsText(file, 'UTF-8');  // Ensure the file is read as UTF-8
+        reader.readAsText(file, 'ISO-8859-1');  // Ensure the file is read as UTF-8
     } else {
         alert('Please upload a valid HTML file.');
     }
