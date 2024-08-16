@@ -1,12 +1,12 @@
 document.getElementById('fileInput').addEventListener('change', function(event) {
     const file = event.target.files[0];
 
-    if (file && file.type === "text/html") {
+    if (file && (file.type === "text/html" || file.type === "text/htm")) {
         const reader = new FileReader();
-        
+
         reader.onload = function(e) {
-            let content = e.target.result;
-            
+            const content = e.target.result;
+
             const parser = new DOMParser();
             const doc = parser.parseFromString(content, 'text/html');
 
@@ -28,8 +28,10 @@ document.getElementById('fileInput').addEventListener('change', function(event) 
 
             const wordSection1 = doc.querySelector('.WordSection1');
             if (wordSection1) {
+                // Rename WordSection1 to contact_right terms
                 wordSection1.className = 'contact_right terms';
                 
+                // Create and insert the contact_left terms div before WordSection1
                 const contactLeft = document.createElement('div');
                 contactLeft.className = 'contact_left terms';
                 
@@ -60,7 +62,7 @@ document.getElementById('fileInput').addEventListener('change', function(event) 
             linkElement.rel = 'stylesheet';
             linkElement.href = 'https://ahmetgorev2.asehriyar.com/style.css';
             doc.head.appendChild(linkElement);
-
+            
             /*
             const scriptElement = document.createElement('script');
             scriptElement.src = 'https://ahmetgorev2.asehriyar.com/script.js';
@@ -74,7 +76,7 @@ document.getElementById('fileInput').addEventListener('change', function(event) 
 
             // Enable the download button and attach click event to download the file
             const downloadButton = document.getElementById('downloadButton');
-            downloadButton.style.display = 'flex';
+            downloadButton.style.display = 'block';
             downloadButton.onclick = function() {
                 const blob = new Blob([modifiedContent], { type: 'text/html' });
                 const url = URL.createObjectURL(blob);
@@ -82,11 +84,11 @@ document.getElementById('fileInput').addEventListener('change', function(event) 
                 a.href = url;
                 a.download = 'test.html';
                 a.click();
-                URL.revokeObjectURL(url);
+                URL.revokeObjectURL(url);  // Clean up after download
             };
         };
 
-        reader.readAsText(file);
+        reader.readAsText(file, 'UTF-8');  // Ensure the file is read as UTF-8
     } else {
         alert('Please upload a valid HTML file.');
     }
