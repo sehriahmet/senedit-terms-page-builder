@@ -62,7 +62,7 @@ document.getElementById('fileInput').addEventListener('change', function(event) 
 
             const linkElement = document.createElement('link');
             linkElement.rel = 'stylesheet';
-            linkElement.href = 'https://new-html-test.pages.dev/style.css/style.css';
+            linkElement.href = 'https://new-html-test.pages.dev/style.css';
             doc.head.appendChild(linkElement);
             
             /*
