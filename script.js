@@ -62,7 +62,7 @@ document.getElementById('fileInput').addEventListener('change', function(event) 
 
             const linkElement = document.createElement('link');
             linkElement.rel = 'stylesheet';
-            linkElement.href = 'style.css';
+            linkElement.href = 'test-html.asehriyar.com/style.css';
             doc.head.appendChild(linkElement);
             
             /*
