@@ -88,6 +88,20 @@ document.getElementById('fileInput').addEventListener('change', function(event) 
                 a.click();
                 URL.revokeObjectURL(url);  // Clean up after download
             };
+
+            // Open the modified HTML content in a new tab
+            const newTabButton = document.createElement('button');
+            newTabButton.textContent = 'Open in New Tab';
+            newTabButton.style.display = 'block';
+            newTabButton.onclick = function() {
+                const blob = new Blob([modifiedContent], { type: 'text/html' });
+                const url = URL.createObjectURL(blob);
+                window.open(url, '_blank');
+                URL.revokeObjectURL(url);  // Clean up after opening
+            };
+
+            // Append the new tab button to the document
+            document.getElementById('controls').appendChild(newTabButton);
         };
 
         reader.readAsText(file, 'ISO-8859-1');  // Ensure the file is read as UTF-8

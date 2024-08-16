@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 <body>
-    <input type="file" id="fileInput" accept=".html, .htm, .mht, .mhtml">
-    <button id="downloadButton" style="display: none;">Download HTML Page</button>
-    <pre id="fileContent"></pre>
-
+    <input type="file" id="fileInput" accept=".html, .htm">
+    <div id="fileContent"></div>
+    <div id="controls" style="margin-top: 10px;"></div>
+    <button id="downloadButton" style="display: none;">Download Modified HTML</button>
     <script src="script.js"></script>
 </body>
 </html>
