@@ -10,6 +10,13 @@ document.getElementById('fileInput').addEventListener('change', function(event) 
             const parser = new DOMParser();
             const doc = parser.parseFromString(content, 'text/html');
 
+            const metaCharset = doc.querySelector('meta[charset]');
+            if (!metaCharset) {
+                const metaElement = document.createElement('meta');
+                metaElement.setAttribute('charset', 'UTF-8');
+                doc.head.insertBefore(metaElement, doc.head.firstChild);
+            }
+
             const mainContainer = document.createElement('div');
             mainContainer.classList.add('main-container');
 
@@ -21,10 +28,8 @@ document.getElementById('fileInput').addEventListener('change', function(event) 
 
             const wordSection1 = doc.querySelector('.WordSection1');
             if (wordSection1) {
-                // Rename WordSection1 to contact_right terms
                 wordSection1.className = 'contact_right terms';
                 
-                // Create and insert the contact_left terms div before WordSection1
                 const contactLeft = document.createElement('div');
                 contactLeft.className = 'contact_left terms';
                 
@@ -77,7 +82,7 @@ document.getElementById('fileInput').addEventListener('change', function(event) 
                 a.href = url;
                 a.download = 'test.html';
                 a.click();
-                URL.revokeObjectURL(url);  // Clean up after download
+                URL.revokeObjectURL(url);
             };
         };
 
