@@ -13,14 +13,18 @@ body {
 .contact_left {
     max-height: 50vh;
     overflow: auto;
-    width: 30%;
+    width: 40%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
-.contact_left span{
-    font-size: 1.2rem !important;
+.contact_left p,
+.contact_left span {
+    line-height: 48px !important;
+    font-size: 17px !important;
+    color: #717171 !important;
+    cursor: pointer;
 }
 
 .contact_right {
