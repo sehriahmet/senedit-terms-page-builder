@@ -104,7 +104,7 @@ document.getElementById('fileInput').addEventListener('change', function(event) 
             document.getElementById('controls').appendChild(newTabButton);
         };
 
-        reader.readAsText(file, 'ISO-8859-1');  // Ensure the file is read as UTF-8
+        reader.readAsText(file, 'UTF-8');  // Ensure the file is read as UTF-8
     } else {
         alert('Please upload a valid HTML file.');
     }
