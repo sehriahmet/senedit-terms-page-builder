@@ -20,7 +20,7 @@ document.getElementById('fileInput').addEventListener('change', function(event) 
             }
 
             const mainContainer = document.createElement('div');
-            mainContainer.classList.add('main-container');
+            mainContainer.classList.add('terms-main-container');
 
             while (doc.body.firstChild) {
                 mainContainer.appendChild(doc.body.firstChild);
@@ -43,6 +43,17 @@ document.getElementById('fileInput').addEventListener('change', function(event) 
             const contactRight = doc.querySelector('.contact_right');
             const contactLeft = doc.querySelector('.contact_left');
             if (contactRight && contactLeft) {
+                const heading = document.createElement('h1');
+                heading.textContent = 'Hüküm & Şartlar';
+                contactLeft.prepend(heading); // Add the heading at the top of contactLeft
+                const onBilgilendirme0 = document.createElement('span');
+                const onBilgilendirme = document.createElement('a');
+                onBilgilendirme.innerHTML = 'Ön Bilgilendirme';
+                onBilgilendirme.className = 'on-bilgilendirme';
+                console.log(onBilgilendirme);
+                onBilgilendirme0.innerHTML += onBilgilendirme.outerHTML;
+                contactLeft.innerHTML += onBilgilendirme0.outerHTML;
+
                 const classNames = [
                     'MsoListParagraphCxSpFirst', 
                     'MsoListParagraphCxSpMiddle', 
@@ -53,30 +64,41 @@ document.getElementById('fileInput').addEventListener('change', function(event) 
                     const paragraphs = contactRight.getElementsByClassName(className);
                     
                     Array.from(paragraphs).forEach(paragraph => {
+                        
                         if (paragraph.getElementsByTagName('a').length > 0) {
+                            console.log(paragraph);
                             contactLeft.innerHTML += paragraph.outerHTML;
                         }
                     });
                 });
             }
+            
+            const spansWithMsoListIgnore = doc.querySelectorAll('span[style*="mso-list:Ignore"]');
+            spansWithMsoListIgnore.forEach(function(span) {
+                if (span.textContent.includes('§')) {
+                    // console.log(span.outerHTML);
+                    span.innerHTML = '§ ';
+                    span.style.fontFamily = 'Wingdings';
+                }
+            });
+
+            const jQueryElement = document.createElement('script');
+            jQueryElement.src = "https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js";
+            doc.head.appendChild(jQueryElement);
 
             const linkElement = document.createElement('link');
             linkElement.rel = 'stylesheet';
-            linkElement.href = 'https://new-html-test.pages.dev/style.css';
+            linkElement.href = 'style.css';
             doc.head.appendChild(linkElement);
             
-            /*
             const scriptElement = document.createElement('script');
-            scriptElement.src = 'https://ahmetgorev2.asehriyar.com/script.js';
+            scriptElement.src = 'index.js';
             doc.body.appendChild(scriptElement);
-            */
 
             const modifiedContent = new XMLSerializer().serializeToString(doc);
 
-            // Display the modified content
             document.getElementById('fileContent').innerHTML = modifiedContent;
 
-            // Enable the download button and attach click event to download the file
             const downloadButton = document.getElementById('downloadButton');
             downloadButton.style.display = 'block';
             downloadButton.onclick = function() {
@@ -86,10 +108,9 @@ document.getElementById('fileInput').addEventListener('change', function(event) 
                 a.href = url;
                 a.download = 'test.html';
                 a.click();
-                URL.revokeObjectURL(url);  // Clean up after download
+                URL.revokeObjectURL(url);
             };
 
-            // Open the modified HTML content in a new tab
             const newTabButton = document.createElement('button');
             newTabButton.textContent = 'Open in New Tab';
             newTabButton.style.display = 'block';
