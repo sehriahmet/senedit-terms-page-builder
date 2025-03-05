@@ -27,7 +27,7 @@ This repository is used for managing the SenEDIT terms and conditions page. It i
 6. **Modify `contact_right terms` Class:**
    - Add a reference to "Kanuni Tebligat Bilgileri" to enable scrolling.
    - Check for bold style paragraphs. Ensure paragraphs that should be in the `MsoNormal` class are not mistakenly in the `G222Heading` class. This often occurs in sections 5.1, 5.2, and 5.4.
-   - Remove unnecessary margins added by Word for page synchronization.
+   - Remove unnecessary margins added in Word for page synchronization. This often occurs in sections between 2.7. – 3., 5.4. – 5.5., and 7.3. – 7.4.
 
 7. **Test the Changes:**
    - Place the edited file in the repository's main directory.
