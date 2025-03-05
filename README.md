@@ -1,6 +1,6 @@
 # SenEDIT Terms and Conditions Page Builder
 
-This repository is used for managing the SenEDIT terms and conditions page. It helps convert a Word document into an HTML page designed for the SenEDIT terms and conditions page.
+This repository is used for managing the SenEDIT terms and conditions page. It is used to convert a Word document into an HTML page designed for the SenEDIT terms and conditions page. 
 
 ## How to Use This Tool
 
@@ -8,7 +8,7 @@ This repository is used for managing the SenEDIT terms and conditions page. It h
    - Open the Word document and use the "Save As" feature to save it as an HTML file.
 
 2. **Upload HTML File:**
-   - Upload the HTML file to the repository's site: [SenEDIT Terms Page Builder](https://senedit-terms-page-builder.asehriyar.com/).
+   - Upload the HTML file to the repository's site: [SenEDIT Terms Page Builder](https://sehriahmet.github.io/senedit-terms-page-builder/).
 
 3. **Download Processed File:**
    - Download the processed file from the tool.
@@ -22,7 +22,7 @@ This repository is used for managing the SenEDIT terms and conditions page. It h
 5. **Modify `contact_left terms` Class:**
    - Add the "Kanuni Tebligat Bilgileri" section.
    - Add a PDF download link if necessary.
-   - The previous `contact_left terms` can often be reused.
+   - Note: The previous `contact_left terms` can often be reused, therefore there may be no need to change this content, and the previous version from SenEDIT page can be used again. In this situation, go to step 6 directly.
 
 6. **Modify `contact_right terms` Class:**
    - Add a reference to "Kanuni Tebligat Bilgileri" to enable scrolling.
