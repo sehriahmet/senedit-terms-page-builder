@@ -57,7 +57,8 @@ document.getElementById('fileInput').addEventListener('change', function(event) 
                 const classNames = [
                     'MsoListParagraphCxSpFirst', 
                     'MsoListParagraphCxSpMiddle', 
-                    'MsoListParagraphCxSpLast'
+                    'MsoListParagraphCxSpLast',
+                    'MsoListParagraph',
                 ];
 
                 classNames.forEach(className => {
@@ -66,7 +67,7 @@ document.getElementById('fileInput').addEventListener('change', function(event) 
                     Array.from(paragraphs).forEach(paragraph => {
                         
                         if (paragraph.getElementsByTagName('a').length > 0) {
-                            console.log(paragraph);
+                            console.log(paragraph); 
                             contactLeft.innerHTML += paragraph.outerHTML;
                         }
                     });
